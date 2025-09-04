@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-conset userSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     name: {
         type: String,
         maxlength: 50
@@ -33,4 +33,4 @@ conset userSchema = mongoose.Schema({
 
 const User = mongoose.model('user', userSchema)
 
-module.exports = {user}
+module.exports = {User}
