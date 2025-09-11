@@ -1,6 +1,6 @@
-const express = require('express')
-const app = express()
-const port = 5000
+const express = require('express');
+const app = express();
+const port = 5000;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const config = require('./config/key');
@@ -43,7 +43,12 @@ app.post('/api/users/register',async (req,res) => {
 
 app.post('/api/users/login',async (req,res) => {
     try{
-
+        // 여기에 로그인 처리 로직을 작성합니다.
+        // 1. 데이터베이스에서 이메일 찾기
+        // 2. 비밀번호 비교
+        // 3. 토큰 생성 및 응답
+        console.log('로그인 요청이 서버에 성공적으로 도달했습니다.');
+//        res.status(200).json({ success: true });
         //요청된 이메일을 데이터베이스에서 있는지 찾는다 .
         const user = await User.findOne({ email: req.body.email });
         if(!user){
@@ -111,7 +116,11 @@ app.get('/api/users/logout', auth, async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.get('/api/hello',(req,res) => {
+    res.status(200).send('안녕하세요')
 })
+
+app.listen(port, () => {
+    console.log(`서버가 ${port}번 포트에서 실행 중입니다.`);
+});
 
